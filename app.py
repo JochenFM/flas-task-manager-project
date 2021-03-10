@@ -21,10 +21,10 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_tasks")
 def get_task():
-    tasks = mongo.db.tasks.find()
+    tasks = list(mongo.db.tasks.find())
     return render_template("tasks.html", tasks=tasks)
 
-
+ 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
